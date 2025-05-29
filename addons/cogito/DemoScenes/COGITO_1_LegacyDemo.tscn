@@ -1707,8 +1707,8 @@ material = ExtResource("38_l5vpp")
 [node name="TransitionZone" type="Area3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.4, 1.25, -11.6)
 script = ExtResource("43_bchdf")
-target_scene_path = "uid://dty7vjg3hp68b"
-target_connector = "ConnectorA"
+target_scene_path = "uid://e31n36p8i6an"
+target_connector = "ConnectorFromLab"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TransitionZone"]
 mesh = SubResource("BoxMesh_fj0b6")

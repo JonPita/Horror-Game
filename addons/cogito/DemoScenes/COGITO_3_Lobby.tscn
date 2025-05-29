@@ -3247,7 +3247,8 @@ connectors = [NodePath("MAIN_LOBBY/LAB_CONNECTOR/ConnectorFromLab")]
 save_temp_on_enter = true
 bgm_neutral = ExtResource("2_hd73s")
 bgm_combat = ExtResource("2_jeioi")
-music_max_volume_db = -8.0
+music_max_volume_db = 24.0
+music_pitch = 0.125
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.5, -0.224144, 0.836516, -1.13133e-08, 0.965926, 0.258819, -0.866025, -0.12941, 0.482963, 0, 2, 0)
@@ -3271,6 +3272,9 @@ material = SubResource("FogMaterial_4avjx")
 [node name="Player" parent="." instance=ExtResource("3_mgle8")]
 transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 3.03073, 0.905039, -17.9321)
 inventory_data = SubResource("Resource_md63x")
+disable_roll_anim = true
+CAN_BUNNYHOP = false
+TOGGLE_CROUCH = true
 step_height_camera_lerp = 1.5
 
 [node name="QUESTS" type="Node3D" parent="."]
@@ -7129,6 +7133,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_si7uc")
 
 [node name="CoffeeMug" parent="BREAK_ROOM" instance=ExtResource("44_harbr")]
+cogito_name = ""
 
 [node name="CoffeeMug2" parent="BREAK_ROOM" instance=ExtResource("44_harbr")]
 transform = Transform3D(0.969501, 0, 0.245088, 0, 1, 0, -0.245088, 0, 0.969501, 1.1868, 0.493418, -0.279196)

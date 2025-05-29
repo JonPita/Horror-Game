@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cptcurug4kins"]
+
+[ext_resource type="Script" uid="uid://duextnfx8t2xu" path="res://Our Assets/Scripts/radio.gd" id="1_cej07"]
+[ext_resource type="PackedScene" uid="uid://cs6raqlyejqul" path="res://addons/cogito/DemoScenes/DemoPrefabs/generic_button.tscn" id="2_cej07"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2x7wg"]
+radius = 0.15
+height = 0.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cej07"]
+size = Vector3(0.824099, 0.413622, 0.514755)
+
+[node name="Radio" type="StaticBody3D"]
+script = ExtResource("1_cej07")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.0351942)
+mesh = SubResource("CapsuleMesh_2x7wg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0140867, 0.0432558, -0.000389099)
+shape = SubResource("BoxShape3D_cej07")
+
+[node name="GenericButton" parent="." instance=ExtResource("2_cej07")]
+transform = Transform3D(0.685, -1.45546e-15, 6.36201e-23, 0, -2.99423e-08, -0.685, 1.45546e-15, 0.685, -2.99423e-08, 0.0509561, 0.0140297, 0.157536)
+
+[node name="LZBMusic" type="AudioStreamPlayer3D" parent="."]
+
+[node name="XenoMusic" type="AudioStreamPlayer3D" parent="."]
+
+[node name="FeiMusic" type="AudioStreamPlayer3D" parent="."]

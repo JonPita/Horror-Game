@@ -76,6 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00848603, 0.0547636, 2.3841
 shape = SubResource("CylinderShape3D_qkgo7")
 
 [node name="CarryableComponent" parent="." instance=ExtResource("2_gdrhw")]
+is_carryable_while_wielding = true
 carry_distance_offset = -0.7
 carrying_velocity_multiplier = 12.0
 drop_distance = 1.0

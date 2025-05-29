@@ -10,7 +10,7 @@ extends Node
 @export var bgm_neutral : AudioStream
 @export var bgm_combat : AudioStream
 @export_range(-80.0, 24.0) var music_max_volume_db : float = -6.0
-
+@export_range(0.125, 1.2) var music_pitch: float = 1.0
 
 func move_player_to_connector(connector_name:String):
 	for node in connectors:
@@ -51,6 +51,7 @@ func setup_bgm() -> void:
 		music_player.set_bus("Music")
 		music_player.volume_db = -80.0 #Start at mute
 		music_fade_in(music_player, 4, music_max_volume_db)
+		music_player.pitch_scale = music_pitch
 		music_player.play()
 
 

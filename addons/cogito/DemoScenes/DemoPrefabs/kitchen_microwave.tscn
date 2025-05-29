@@ -224,7 +224,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0399451, 0.0399451, -1.8047
 script = ExtResource("1_ncels")
 open_sound = ExtResource("2_0ao51")
 close_sound = ExtResource("3_lt4en")
-open_rotation_deg = -90.0
 open_rotation = Vector3(0, -90, 0)
 door_speed = 3.0
 angle_tolerance = 2.0
@@ -234,6 +233,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196551, 0.138989, 0.0008248
 shape = SubResource("BoxShape3D_xy8kc")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="kitchenMicrowave(Clone)/AnimatableBody3D"]
+bus = &"SFX"
 
 [node name="BasicInteraction" parent="kitchenMicrowave(Clone)/AnimatableBody3D" instance=ExtResource("4_lbhvj")]
 

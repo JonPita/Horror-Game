@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs5wevlecgac4"
-path="res://.godot/imported/fading_pallette.png-d28d8bebce445223a328e14c2d8aae45.ctex"
+path="res://.godot/imported/fading_pallette.png-f930164a5a90378a8b211e29d3a15db0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fading_pallette.png"
-dest_files=["res://.godot/imported/fading_pallette.png-d28d8bebce445223a328e14c2d8aae45.ctex"]
+source_file="res://Our Assets/fading_pallette.png"
+dest_files=["res://.godot/imported/fading_pallette.png-f930164a5a90378a8b211e29d3a15db0.ctex"]
 
 [params]
 

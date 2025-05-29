@@ -10,13 +10,13 @@ extends Node3D
 @export var have_stock_text : String = "In Stock"
 @export var stock_empty_text : String = "Sold Out"
 @export_group("Sound Settings")
-@export var dispensing_sound : AudioStream
 
 @onready var cogito_button = $GenericButton
 @onready var currency_check : CurrencyCheck = $GenericButton/CurrencyCheck
 @onready var spawn_point : Marker3D = $Spawnpoint
 @onready var stock_label = $StaticBody3D/StockLabel
 @onready var stock_counter : Label3D = $StaticBody3D/StockCounter
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 var player_interaction_component : PlayerInteractionComponent
 var currency_attribute : CogitoCurrency
@@ -57,8 +57,9 @@ func _on_transaction_success() -> void:
 
 
 func _delayed_object_spawn() -> void:
-	if dispensing_sound:
-		Audio.play_sound_3d(dispensing_sound).global_position = spawn_point.global_position
+	if audio_stream_player_3d:
+		#Audio.play_sound_3d(dispensing_sound).global_position = spawn_point.global_position
+		audio_stream_player_3d.play()
 	
 	await get_tree().create_timer(spawn_delay).timeout
 	is_dispensing = false
