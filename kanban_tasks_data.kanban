@@ -1,0 +1,50 @@
+{
+	"categories": [
+		{
+			"uuid": "3f227f53-5120-417f-b8c8-4a5ffc419a49",
+			"title": "Task",
+			"color": "b02eff"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "c0e0fd9b-de8b-4b47-b24d-4b49324eddb6",
+			"title": "Todo",
+			"tasks": [
+				"25c926b0-01f7-49fc-84ef-0fdc602b0061"
+			]
+		},
+		{
+			"uuid": "d283e41b-b33a-4733-93ca-40dc3404f083",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "08048e8b-5df6-4bc8-940f-162c144c24f7",
+			"title": "Done",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "25c926b0-01f7-49fc-84ef-0fdc602b0061",
+			"title": "Sounds to Collect and Compile",
+			"description": "General Ideas: [Chains, Paper, folders, note cards]\nFoot Steps: []\nTools: []",
+			"category": "3f227f53-5120-417f-b8c8-4a5ffc419a49",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"c0e0fd9b-de8b-4b47-b24d-4b49324eddb6"
+			],
+			[
+				"d283e41b-b33a-4733-93ca-40dc3404f083"
+			],
+			[
+				"08048e8b-5df6-4bc8-940f-162c144c24f7"
+			]
+		]
+	}
+}
