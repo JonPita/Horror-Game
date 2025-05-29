@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=3 uid="uid://cud7jwvomj24d"]
+[gd_scene load_steps=142 format=3 uid="uid://cud7jwvomj24d"]
 
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://addons/cogito/PackedScenes/cogito_player.tscn" id="1_7d2n7"]
 [ext_resource type="Script" uid="uid://c2kkj7vhsd1oi" path="res://addons/cogito/SceneManagement/cogito_scene.gd" id="1_b15oo"]
@@ -45,7 +45,6 @@
 [ext_resource type="Script" uid="uid://6010ovanwkwo" path="res://addons/cogito/Scripts/scene_transition_zone.gd" id="43_bchdf"]
 [ext_resource type="PackedScene" uid="uid://bhj146kxvb3s5" path="res://addons/cogito/PackedScenes/document.tscn" id="44_im51b"]
 [ext_resource type="PackedScene" uid="uid://i4rqcx7lyrfd" path="res://addons/cogito/PackedScenes/keypad_prefab.tscn" id="48_150m3"]
-[ext_resource type="Shader" uid="uid://c50r50317d5uk" path="res://PixelDither.gdshader" id="49_a5gxu"]
 [ext_resource type="Script" uid="uid://d2jjqadlnhp6x" path="res://addons/cogito/QuestSystem/Components/cogito_quest_updater.gd" id="49_obvm3"]
 [ext_resource type="Resource" uid="uid://yb7k8evveqdp" path="res://addons/cogito/QuestSystem/Quests/QuestA.tres" id="50_blav1"]
 [ext_resource type="Resource" uid="uid://bmkcm7tkpqjwb" path="res://addons/cogito/QuestSystem/Quests/QuestB.tres" id="51_cmhea"]
@@ -355,7 +354,7 @@ size = Vector3(1.5, 0.01, 1.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ht4uj"]
 size = Vector3(100, 3, 100)
 
-[sub_resource type="Resource" id="Resource_lsuwf"]
+[sub_resource type="Resource" id="Resource_72kvm"]
 resource_local_to_scene = true
 script = ExtResource("2_chxar")
 grid = true
@@ -411,20 +410,6 @@ rim = 0.0
 rim_tint = 0.0
 backlight = Color(0.509804, 0.294118, 0.294118, 1)
 disable_receive_shadows = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a5gxu"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lsuwf"]
-noise = SubResource("FastNoiseLite_a5gxu")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_212xd"]
-shader = ExtResource("49_a5gxu")
-shader_parameter/shader_enabled = true
-shader_parameter/palette = SubResource("NoiseTexture2D_lsuwf")
-shader_parameter/dithering = false
-shader_parameter/dithering_size = 2
-shader_parameter/resolution_scale = 2
-shader_parameter/quantization_level = 16
 
 [node name="COGITO_Demo_01" type="Node3D" node_paths=PackedStringArray("connectors")]
 script = ExtResource("1_b15oo")
@@ -1651,7 +1636,7 @@ spawn_on_death = Array[PackedScene]([])
 
 [node name="Player" parent="." instance=ExtResource("1_7d2n7")]
 transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, -10.4148, 0.905039, -4.11386)
-inventory_data = SubResource("Resource_lsuwf")
+inventory_data = SubResource("Resource_72kvm")
 step_height_camera_lerp = 1.5
 
 [node name="Ladder" parent="." instance=ExtResource("41_q27ev")]
@@ -1896,18 +1881,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 text = "Increase Quest B
 Counter"
 vertical_alignment = 0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_212xd")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-mouse_force_pass_scroll_events = false
 
 [connection signal="on_hold_complete" from="INTERACTIVE_OBJECTS/DoorLocked/DualInteraction" to="INTERACTIVE_OBJECTS/DoorLocked/LockInteraction" method="interact"]
 [connection signal="on_quick_press" from="INTERACTIVE_OBJECTS/DoorLocked/DualInteraction" to="INTERACTIVE_OBJECTS/DoorLocked/BasicInteraction" method="interact"]
