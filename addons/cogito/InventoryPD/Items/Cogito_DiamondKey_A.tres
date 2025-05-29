@@ -24,6 +24,7 @@ description = "Looks like it's only half of some kind of shape."
 icon = ExtResource("1_xkbwk")
 is_stackable = false
 is_droppable = true
+is_unique = false
 stack_size = 0
 drop_scene = "res://addons/cogito/PackedScenes/Pickups/pickup_diamond_key_a.tscn"
 hint_icon_on_use = ExtResource("1_xojlq")
