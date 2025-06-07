@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://cud7jwvomj24d"]
+[gd_scene load_steps=145 format=3 uid="uid://cud7jwvomj24d"]
 
 [ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://addons/cogito/PackedScenes/cogito_player.tscn" id="1_7d2n7"]
 [ext_resource type="Script" uid="uid://c2kkj7vhsd1oi" path="res://addons/cogito/SceneManagement/cogito_scene.gd" id="1_b15oo"]
@@ -45,9 +45,12 @@
 [ext_resource type="Script" uid="uid://6010ovanwkwo" path="res://addons/cogito/Scripts/scene_transition_zone.gd" id="43_bchdf"]
 [ext_resource type="PackedScene" uid="uid://bhj146kxvb3s5" path="res://addons/cogito/PackedScenes/document.tscn" id="44_im51b"]
 [ext_resource type="PackedScene" uid="uid://i4rqcx7lyrfd" path="res://addons/cogito/PackedScenes/keypad_prefab.tscn" id="48_150m3"]
+[ext_resource type="PackedScene" uid="uid://c8bgcthsvpoye" path="res://addons/assets/meshes/blockout/sm_wall_window_1.glb" id="49_212xd"]
 [ext_resource type="Script" uid="uid://d2jjqadlnhp6x" path="res://addons/cogito/QuestSystem/Components/cogito_quest_updater.gd" id="49_obvm3"]
 [ext_resource type="Resource" uid="uid://yb7k8evveqdp" path="res://addons/cogito/QuestSystem/Quests/QuestA.tres" id="50_blav1"]
+[ext_resource type="PackedScene" uid="uid://cwny44qgcrhcd" path="res://addons/assets/meshes/blockout/sm_wall_door_1.glb" id="50_xg3nr"]
 [ext_resource type="Resource" uid="uid://bmkcm7tkpqjwb" path="res://addons/cogito/QuestSystem/Quests/QuestB.tres" id="51_cmhea"]
+[ext_resource type="PackedScene" uid="uid://csnnu60bukr65" path="res://addons/assets/meshes/blockout/sm_wall_1.glb" id="51_nvi7c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2veog"]
 sky_top_color = Color(0.576471, 0.960784, 1, 1)
@@ -354,7 +357,7 @@ size = Vector3(1.5, 0.01, 1.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ht4uj"]
 size = Vector3(100, 3, 100)
 
-[sub_resource type="Resource" id="Resource_72kvm"]
+[sub_resource type="Resource" id="Resource_tmpl4"]
 resource_local_to_scene = true
 script = ExtResource("2_chxar")
 grid = true
@@ -1636,7 +1639,7 @@ spawn_on_death = Array[PackedScene]([])
 
 [node name="Player" parent="." instance=ExtResource("1_7d2n7")]
 transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, -10.4148, 0.905039, -4.11386)
-inventory_data = SubResource("Resource_72kvm")
+inventory_data = SubResource("Resource_tmpl4")
 step_height_camera_lerp = 1.5
 
 [node name="Ladder" parent="." instance=ExtResource("41_q27ev")]
@@ -1881,6 +1884,15 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 text = "Increase Quest B
 Counter"
 vertical_alignment = 0
+
+[node name="sm_wall_window_12" parent="." instance=ExtResource("49_212xd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, -3)
+
+[node name="sm_wall_door_12" parent="." instance=ExtResource("50_xg3nr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 0)
+
+[node name="sm_wall_12" parent="." instance=ExtResource("51_nvi7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 3)
 
 [connection signal="on_hold_complete" from="INTERACTIVE_OBJECTS/DoorLocked/DualInteraction" to="INTERACTIVE_OBJECTS/DoorLocked/LockInteraction" method="interact"]
 [connection signal="on_quick_press" from="INTERACTIVE_OBJECTS/DoorLocked/DualInteraction" to="INTERACTIVE_OBJECTS/DoorLocked/BasicInteraction" method="interact"]
