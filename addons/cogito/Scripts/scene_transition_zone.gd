@@ -1,7 +1,7 @@
 extends Area3D
 
 ### Level scene to transition to
-@export var target_scene : PackedScene = null
+#@export var target_scene : PackedScene = null
 ## Level scene to transition to
 @export_file("*.tscn") var target_scene_path : String
 ## Name of connector node the player should transition to in target scene. This node needs to exist in the target scene and has to be added to the connector array of the target scene cogito_scene script.

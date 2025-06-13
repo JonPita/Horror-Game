@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://017wlbrnndy0" path="res://addons/cogito/Scripts/wieldables_sway.gd" id="12_lr21i"]
 [ext_resource type="AudioStream" uid="uid://up2hfhgq1qx6" path="res://addons/cogito/Assets/Audio/Kenney/Footsteps/footstep00.ogg" id="12_ug3wt"]
 [ext_resource type="AudioStream" uid="uid://crj07wq4oocwi" path="res://addons/cogito/Assets/Audio/Kenney/Footsteps/footstep01.ogg" id="13_fyfhw"]
-[ext_resource type="Shader" uid="uid://c50r50317d5uk" path="res://Our Assets/PixelDither.gdshader" id="13_s725a"]
+[ext_resource type="Shader" uid="uid://c50r50317d5uk" path="res://Our Assets/Shaders/PixelDither.gdshader" id="13_s725a"]
 [ext_resource type="Script" uid="uid://ua63m2y35w46" path="res://addons/cogito/Scripts/item_drop_shape_cast.gd" id="14_bpb0d"]
 [ext_resource type="AudioStream" uid="uid://dewyukd562k37" path="res://addons/cogito/Assets/Audio/Kenney/Footsteps/footstep02.ogg" id="14_opnk5"]
 [ext_resource type="AudioStream" uid="uid://c5kfw4o57foju" path="res://addons/cogito/Assets/Audio/Kenney/Footsteps/footstep03.ogg" id="15_wtp0a"]
@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cga0lxak2u2oq" path="res://addons/cogito/Components/AutoPickUpZone.tscn" id="24_810bw"]
 [ext_resource type="Script" uid="uid://egffa3q4ftpg" path="res://addons/cogito/Scripts/CogitoGUI.gd" id="24_ekjhh"]
 [ext_resource type="Script" uid="uid://dog0pawpwd55d" path="res://addons/cogito/InventoryPD/CustomResources/InventoryItemPD.gd" id="25_syofm"]
-[ext_resource type="Texture2D" uid="uid://dnm5h6qlobcpl" path="res://Our Assets/cp_finalpallette.png" id="26_qmi31"]
+[ext_resource type="Texture2D" uid="uid://dnm5h6qlobcpl" path="res://Our Assets/Textures/cp_finalpallette.png" id="26_qmi31"]
 [ext_resource type="Resource" uid="uid://bqhbrpnp2tt08" path="res://addons/cogito/InventoryPD/Items/Cogito_FoamBullets.tres" id="26_tndpm"]
 [ext_resource type="Resource" uid="uid://cvupo3p844nh2" path="res://addons/cogito/InventoryPD/Items/Cogito_LaserAmmo.tres" id="27_8coi0"]
 
@@ -74,6 +74,8 @@ JUMP_VELOCITY = 4.0
 WALKING_SPEED = 4.0
 SPRINTING_SPEED = 7.0
 SLIDE_JUMP_MOD = 1.3
+disable_roll_anim = true
+CAN_BUNNYHOP = false
 HEADBOBBLE = 1
 STEP_HEIGHT_DEFAULT = Vector3(0, 0.35, 0)
 STEP_MAX_SLOPE_DEGREE = 1.0

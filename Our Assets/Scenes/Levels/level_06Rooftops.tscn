@@ -1,0 +1,131 @@
+[gd_scene load_steps=23 format=3 uid="uid://cnvyy2wkw1m73"]
+
+[ext_resource type="Script" uid="uid://c2kkj7vhsd1oi" path="res://addons/cogito/SceneManagement/cogito_scene.gd" id="1_3mavq"]
+[ext_resource type="Texture2D" uid="uid://c5xp3oe35bsl1" path="res://Our Assets/Textures/rogland_clear_night_4k.exr" id="2_vlpl7"]
+[ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://addons/cogito/PackedScenes/cogito_player.tscn" id="2_wt30j"]
+[ext_resource type="Script" uid="uid://di15gqemrkk0x" path="res://addons/cogito/InventoryPD/CustomResources/InventorySlotPD.gd" id="3_vlpl7"]
+[ext_resource type="Script" uid="uid://btnha2whsheir" path="res://addons/cogito/InventoryPD/cogito_inventory.gd" id="4_d0l6e"]
+[ext_resource type="Script" uid="uid://6010ovanwkwo" path="res://addons/cogito/Scripts/scene_transition_zone.gd" id="5_n44qj"]
+[ext_resource type="Texture2D" uid="uid://5fch48818wxu" path="res://Our Assets/Textures/Asphalt/CityStreetAsphaltGenericClean001_COL_2K.jpg" id="7_btk04"]
+[ext_resource type="Texture2D" uid="uid://ug25eqcoqhap" path="res://Our Assets/Textures/Asphalt/CityStreetAsphaltGenericClean001_DISP_2K.jpg" id="8_h3lpq"]
+[ext_resource type="Texture2D" uid="uid://crgkttab4td7k" path="res://Our Assets/Textures/Asphalt/CityStreetAsphaltGenericClean001_REFL_2K.jpg" id="9_wy2js"]
+[ext_resource type="Texture2D" uid="uid://covsurk6qp1wq" path="res://Our Assets/Textures/Asphalt/CityStreetAsphaltGenericClean001_NRM_2K.jpg" id="10_k0w2m"]
+[ext_resource type="Texture2D" uid="uid://puyjgxganpqi" path="res://Our Assets/Textures/Asphalt/CityStreetAsphaltGenericClean001_GLOSS_2K.jpg" id="11_qubnp"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_d0l6e"]
+panorama = ExtResource("2_vlpl7")
+energy_multiplier = 0.2
+
+[sub_resource type="Sky" id="Sky_viov4"]
+sky_material = SubResource("PanoramaSkyMaterial_d0l6e")
+
+[sub_resource type="Environment" id="Environment_4x61l"]
+background_mode = 2
+sky = SubResource("Sky_viov4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_btk04"]
+resource_local_to_scene = true
+script = ExtResource("4_d0l6e")
+grid = true
+starter_inventory = Array[ExtResource("3_vlpl7")]([])
+inventory_size = Vector2i(5, 3)
+inventory_slots = Array[ExtResource("3_vlpl7")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4x61l"]
+size = Vector3(2.35367, 3, 2.02508)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujrjk"]
+albedo_texture = ExtResource("7_btk04")
+metallic = 1.0
+metallic_texture = ExtResource("9_wy2js")
+roughness_texture = ExtResource("11_qubnp")
+normal_enabled = true
+normal_texture = ExtResource("10_k0w2m")
+heightmap_enabled = true
+heightmap_texture = ExtResource("8_h3lpq")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3kkhb"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rn5j3"]
+size = Vector3(1.8, 1.95, 1.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btk04"]
+albedo_color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wt30j"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vlpl7"]
+material = SubResource("StandardMaterial3D_wt30j")
+size = Vector2(8000, 8000)
+
+[node name="Level06_Rooftop" type="Node3D"]
+script = ExtResource("1_3mavq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4x61l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player2" parent="." instance=ExtResource("2_wt30j")]
+transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, 1.02076, 0)
+inventory_data = SubResource("Resource_btk04")
+TOGGLE_CROUCH = true
+step_height_camera_lerp = 1.5
+
+[node name="Connector_Default" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28306, 0, 3)
+
+[node name="TransitionZone_backwards" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 2)
+script = ExtResource("5_n44qj")
+target_scene_path = "uid://gmncqu6kswp0"
+target_connector = "Connector_Default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TransitionZone_backwards"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0576599, 0, 0.12125)
+shape = SubResource("BoxShape3D_4x61l")
+
+[node name="Asphalt roof" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.299999, 0)
+use_collision = true
+size = Vector3(30, 0.3, 20)
+material = SubResource("StandardMaterial3D_ujrjk")
+
+[node name="Overrun" type="CSGMesh3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.28808, 1.20716, 2.07576)
+mesh = SubResource("BoxMesh_3kkhb")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Overrun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638298, -0.388591, 0)
+operation = 2
+mesh = SubResource("BoxMesh_rn5j3")
+
+[node name="Building" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24.0505, 0)
+size = Vector3(30, 47.2053, 20)
+material = SubResource("StandardMaterial3D_btk04")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -45.9185, 0)
+mesh = SubResource("PlaneMesh_vlpl7")
+
+[node name="Rooftop label" type="Label3D" parent="."]
+transform = Transform3D(0, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 0, 0, 4.88139, 0.57889, -0.193906)
+text = "Level 6 Rooftop
+"
+font_size = 100
+outline_size = 6
+
+[node name="Penthouse Label" type="Label3D" parent="."]
+transform = Transform3D(-7.10543e-15, 0, 1, 0, 1, 0, -1, 0, -7.10543e-15, -1.65912, 2.22559, 1.91501)
+text = "Level 5 penthouse
+"
+font_size = 100
+outline_size = 6

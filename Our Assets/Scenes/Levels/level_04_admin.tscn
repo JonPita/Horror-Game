@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://bi4r8djr8recf"]
+
+[ext_resource type="Script" uid="uid://c2kkj7vhsd1oi" path="res://addons/cogito/SceneManagement/cogito_scene.gd" id="1_tvbc7"]
+[ext_resource type="PackedScene" uid="uid://kicjwmh02uwf" path="res://addons/cogito/PackedScenes/cogito_player.tscn" id="2_3pvxg"]
+[ext_resource type="Script" uid="uid://di15gqemrkk0x" path="res://addons/cogito/InventoryPD/CustomResources/InventorySlotPD.gd" id="3_7usbf"]
+[ext_resource type="Script" uid="uid://btnha2whsheir" path="res://addons/cogito/InventoryPD/cogito_inventory.gd" id="4_eea2t"]
+[ext_resource type="Script" uid="uid://6010ovanwkwo" path="res://addons/cogito/Scripts/scene_transition_zone.gd" id="5_81djn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f23pl"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_viov4"]
+sky_material = SubResource("ProceduralSkyMaterial_f23pl")
+
+[sub_resource type="Environment" id="Environment_4x61l"]
+background_mode = 2
+sky = SubResource("Sky_viov4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Resource" id="Resource_tvbc7"]
+resource_local_to_scene = true
+script = ExtResource("4_eea2t")
+grid = true
+starter_inventory = Array[ExtResource("3_7usbf")]([])
+inventory_size = Vector2i(5, 3)
+inventory_slots = Array[ExtResource("3_7usbf")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tvbc7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_viov4"]
+albedo_color = Color(0.496434, 1, 0.781665, 1)
+albedo_texture = SubResource("NoiseTexture2D_tvbc7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4x61l"]
+size = Vector3(2.35367, 3, 2.02508)
+
+[node name="Level03_admin" type="Node3D"]
+script = ExtResource("1_tvbc7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4x61l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player2" parent="." instance=ExtResource("2_3pvxg")]
+transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, 0, 1.99869, 0)
+inventory_data = SubResource("Resource_tvbc7")
+TOGGLE_CROUCH = true
+step_height_camera_lerp = 1.5
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+operation = 2
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.15674)
+size = Vector3(10, 3, 12.3135)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0)
+operation = 2
+size = Vector3(9.8, 2.9, 9.8)
+material = SubResource("StandardMaterial3D_viov4")
+
+[node name="Connector_Default" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3345, 0, 3.82277)
+
+[node name="TransitionZone_Forward" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75623, 1.5, 3.8161)
+script = ExtResource("5_81djn")
+target_scene_path = "uid://gmncqu6kswp0"
+target_connector = "Connector_Default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TransitionZone_Forward"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0576599, 0, 0.12125)
+shape = SubResource("BoxShape3D_4x61l")
+
+[node name="TransitionZone_Backwards" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40637, 1.5, -4.02929)
+script = ExtResource("5_81djn")
+target_scene_path = "uid://vc1augdyks2i"
+target_connector = "Connector_Default"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TransitionZone_Backwards"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26867, -0.449764, 0.12125)
+shape = SubResource("BoxShape3D_4x61l")
+
+[node name="Admin Label" type="Label3D" parent="."]
+transform = Transform3D(0, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 0, 0, 0.0354714, 0.305907, -0.0900619)
+text = "Level 4 admin
+"
+font_size = 100
+outline_size = 6
+
+[node name="Penthouse Label" type="Label3D" parent="."]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -2.99264, 2.49755, 3.77692)
+text = "Level 5 penthouse
+"
+font_size = 100
+outline_size = 6
+
+[node name="Apartments label" type="Label3D" parent="."]
+transform = Transform3D(0.727689, 0, -0.685907, 0, 1, 0, 0.685907, 0, 0.727689, 3.25143, 2.49755, -3.35614)
+text = "Level 3 apartments
+"
+font_size = 100
+outline_size = 6
+
+[editable path="Player2"]
